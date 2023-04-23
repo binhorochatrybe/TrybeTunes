@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 import NotFound from './pages/NotFound';
 import { createUser } from './services/userAPI';
+import Loading from './pages/Loading';
 
 const numberThree = 3;
 
@@ -57,7 +58,6 @@ class App extends React.Component {
               disbaleOrNo={ nameLogin.length < numberThree }
               sendLogin={ this.sendLogin }
               objectss={ objectss }
-              loading={ loading }
             />) }
           />
           <Route path="/search" component={ Search } />
@@ -67,6 +67,7 @@ class App extends React.Component {
           <Route path="/profile/edit" component={ ProfileEdit } />
           <Route path="/*" component={ NotFound } />
         </Switch>
+        {loading && <Loading />}
         {redirect && <Redirect to="/search" />}
       </Router>
     );
