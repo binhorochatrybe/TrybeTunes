@@ -18,6 +18,7 @@ class App extends React.Component {
     nameLogin: '',
     loading: false,
     redirect: false,
+    inputsearch: '',
   };
 
   sendLogin = async () => {
@@ -45,7 +46,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { nameLogin, objectss, loading, redirect } = this.state;
+    const { nameLogin, objectss, loading, redirect, inputsearch } = this.state;
     return (
       <Router>
         <Switch>
@@ -60,7 +61,14 @@ class App extends React.Component {
               objectss={ objectss }
             />) }
           />
-          <Route path="/search" component={ Search } />
+          <Route
+            path="/search"
+            render={ () => (<Search
+              inputsearch={ inputsearch }
+              onInputChange={ this.onInputChange }
+              disbaleOrNo={ inputsearch.length < 2 }
+            />) }
+          />
           <Route path="/album/:id" component={ Album } />
           <Route path="/favorites" component={ Favorites } />
           <Route exact path="/profile" component={ Profile } />
