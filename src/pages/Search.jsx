@@ -17,7 +17,7 @@ class Search extends Component {
       APIResultAlbuns,
       noResults } = this.props;
     return (
-      <div>
+      <div data-testid="page-search">
         {doneSearch && <p>{`Resultado de álbuns de: ${artistSaved}`}</p>}
         <Header />
         <form action="">
