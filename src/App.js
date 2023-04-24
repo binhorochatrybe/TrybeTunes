@@ -105,7 +105,11 @@ class App extends React.Component {
               noResults={ APIResultAlbuns.length === 0 }
             />) }
           />
-          <Route path="/album/:id" component={ Album } />
+          <Route
+            path="/album/:id"
+            render={ ({ match: { params: { id } } }) => (
+              <Album id={ id } />) }
+          />
           <Route path="/favorites" component={ Favorites } />
           <Route exact path="/profile" component={ Profile } />
           <Route path="/profile/edit" component={ ProfileEdit } />
