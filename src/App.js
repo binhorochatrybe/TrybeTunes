@@ -10,6 +10,7 @@ import ProfileEdit from './pages/ProfileEdit';
 import NotFound from './pages/NotFound';
 import { createUser } from './services/userAPI';
 import Loading from './pages/Loading';
+import searchAlbumsAPI from './services/searchAlbumsAPI';
 
 const numberThree = 3;
 
@@ -19,6 +20,27 @@ class App extends React.Component {
     loading: false,
     redirect: false,
     inputsearch: '',
+    done: false,
+    show: false,
+    APIResultAlbuns: [],
+  };
+
+  buttonSearch = async () => {
+    const { inputsearch } = this.state;
+    this.setState({
+      artist: inputsearch,
+      inputsearch: '',
+      loading: true,
+      show: true,
+    });
+    const result = await searchAlbumsAPI(inputsearch);
+    this.setState({
+      loading: false,
+      done: true,
+      APIResultAlbuns: result,
+    });
+    const { APIResultAlbuns } = this.state;
+    console.log(APIResultAlbuns);
   };
 
   sendLogin = async () => {
@@ -46,7 +68,15 @@ class App extends React.Component {
   };
 
   render() {
-    const { nameLogin, objectss, loading, redirect, inputsearch } = this.state;
+    const { nameLogin,
+      objectss,
+      loading,
+      redirect,
+      inputsearch,
+      done,
+      artist,
+      show,
+      APIResultAlbuns } = this.state;
     return (
       <Router>
         <Switch>
@@ -67,6 +97,12 @@ class App extends React.Component {
               inputsearch={ inputsearch }
               onInputChange={ this.onInputChange }
               disbaleOrNo={ inputsearch.length < 2 }
+              buttonSearch={ this.buttonSearch }
+              doneSearch={ done }
+              artistSaved={ artist }
+              showOrNo={ show }
+              APIResultAlbuns={ APIResultAlbuns }
+              noResults={ APIResultAlbuns.length === 0 }
             />) }
           />
           <Route path="/album/:id" component={ Album } />
