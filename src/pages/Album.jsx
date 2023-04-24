@@ -8,8 +8,6 @@ class Album extends Component {
   state = {
     artistName: '',
     collectionName: '',
-    trackName: '',
-    previewUrl: '',
     result: [],
   };
 
@@ -23,29 +21,29 @@ class Album extends Component {
     this.setState({
       artistName: result[0].artistName,
       collectionName: result[0].collectionName,
-      trackName: result[1].trackName,
-      previewUrl: result[1].previewUrl,
       result,
     });
-    console.log(result);
   };
 
   render() {
     const { artistName,
       collectionName,
-      trackName,
-      previewUrl,
       result } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
         <p data-testid="artist-name">{ artistName }</p>
         <p data-testid="album-name">{ collectionName }</p>
-        <MusicCard
-          trackName={ trackName }
-          previewUrl={ previewUrl }
-          result={ result.slice(1) }
-        />
+        {result.slice(1).map((music) => (
+          <div key={ music.trackName }>
+            <MusicCard
+              trackName={ music.trackName }
+              previewUrl={ music.previewUrl }
+              trackId={ music.trackId }
+              objeto={ music }
+            />
+          </div>
+        ))}
       </div>
     );
   }
