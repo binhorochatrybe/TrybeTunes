@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Loading from './Loading';
 
 class Login extends Component {
   render() {
     const { nameLogin, onInputChange, disbaleOrNo, sendLogin, loading } = this.props;
     return (
-      <div data-testid="page-login">
-        <form action="">
+      <div data-testid="page-login" className="mainLogin">
+        <form action="" className="mainForm">
+          <p className="main-title">Trybetunes</p>
           <input
+            className="inputLogin"
             data-testid="login-name-input"
             value={ nameLogin }
             name="nameLogin"
@@ -15,6 +18,7 @@ class Login extends Component {
             onChange={ onInputChange }
           />
           <button
+            className="buttonLogin"
             onClick={ sendLogin }
             disabled={ disbaleOrNo }
             type="button"
@@ -23,7 +27,7 @@ class Login extends Component {
             Entrar
           </button>
         </form>
-        { loading && <p>Carregando...</p> }
+        { loading && <Loading /> }
       </div>
     );
   }

@@ -38,24 +38,25 @@ class MusicCard extends Component {
   };
 
   render() {
-    const { trackName, previewUrl, trackId } = this.props;
+    const { trackName, previewUrl, trackId, objeto } = this.props;
     const { loading, checked } = this.state;
+    console.log(objeto);
     return (
-      <div>
+      <div className="main-cards">
         {loading && <Loading />}
-        <p>{trackName}</p>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
+        <p className="track-title">{trackName}</p>
+        <audio className="audio-card" data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
           O seu navegador não suporta o elemento
           {' '}
           <code>audio</code>
         </audio>
         <label
+          className="star"
           data-testid={ `checkbox-music-${trackId}` }
           htmlFor={ trackId }
-        >
-          Favorita
-        </label>
+        > </label>
+        <span className="star-icon"> </span>
         <input
           onClick={ this.checkedInput }
           type="checkbox"

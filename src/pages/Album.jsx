@@ -30,12 +30,14 @@ class Album extends Component {
       collectionName,
       result } = this.state;
     return (
-      <div data-testid="page-album">
+      <div data-testid="page-album" className="page-album">
         <Header />
-        <p data-testid="artist-name">{ artistName }</p>
-        <p data-testid="album-name">{ collectionName }</p>
+        <p className="artist-name art-card" data-testid="artist-name">{ artistName }</p>
+        <p className="collection-name cc-card" data-testid="album-name">{ collectionName }</p>
+        <div className="control-songs">
         {result.slice(1).map((music) => (
-          <div key={ music.trackName }>
+          <div className="main-cards-album" key={ music.trackName }>
+            <img className="img-album" src={ music.artworkUrl100 } alt="" />
             <MusicCard
               trackName={ music.trackName }
               previewUrl={ music.previewUrl }
@@ -44,6 +46,7 @@ class Album extends Component {
             />
           </div>
         ))}
+        </div>
       </div>
     );
   }

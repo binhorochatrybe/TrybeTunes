@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'SenjaSantuy';
+    src: url('../Fontes/SenjaSantuy-yw5qq.otf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .img-album {
+    margin: 10px;
+}
+.control-songs {
+    width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.main-cards-album {
+    background-color: #333d29;
+    display: flex;
+    border-radius: 10px;
+    width: 500px;
+}
+.main-cards {
+    background-color: #c2c5aa;
+    width: 400px;
+    border-radius: 20px;
+}
+.art-card {
+    font-size:20px;
+    text-align: center;
+    padding: 5px;
+    background-color: #6b705c;
+    border-radius: 90px;
+}
+.cc-card {
+    font-size: 30px;
+    text-align: center;
+    color: aliceblue;
+    padding: 10px;
+    font-family: 'SenjaSantuy', sans-serif;
+}
+.track-title {
+    font-family: 'SenjaSantuy', sans-serif;
+    text-align: center;
+    padding: 10px;
+}
+
+.star {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .star-icon {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-image: url('../2107957.png');
+    background-size: cover;
+    margin-left: 18px;
+  }
+  
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  input[type="checkbox"] + .star-icon::before {
+    content: "\2605";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 25px;
+    color: gold;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  input[type="checkbox"]:checked + .star-icon::before {
+    opacity: 1;
+  }
+  .audio-card {
+    padding-left: 10px;
+  }

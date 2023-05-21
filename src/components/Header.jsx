@@ -30,10 +30,17 @@ class Header extends Component {
         data-testid="header-component"
       >
         {loading && <Loading />}
-        <p data-testid="header-user-name">{ name }</p>
-        <Link data-testid="link-to-search" to="/search">Search</Link>
-        <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
-        <Link data-testid="link-to-profile" to="/profile">Profile</Link>
+        <p
+          className="hello-title"
+          data-testid="header-user-name"
+        >
+          {` Hello, ${name} :)`}
+        </p>
+        <div className="mainLinkS">
+          <Link className="linkS" data-testid="link-to-search" to="/search">Search</Link>
+          <Link className="linkS" data-testid="link-to-favorites" to="/favorites">Favorites</Link>
+          <Link className="linkS" data-testid="link-to-profile" to="/profile">Profile</Link>
+        </div>
       </header>
     );
   }

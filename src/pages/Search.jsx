@@ -17,11 +17,13 @@ class Search extends Component {
       APIResultAlbuns,
       noResults } = this.props;
     return (
-      <div data-testid="page-search">
-        {doneSearch && <p>{`Resultado de álbuns de: ${artistSaved}`}</p>}
+      <div data-testid="page-search" className="main-search">
+        {doneSearch
+        && <p className="title-search">{`Resultado de álbuns de: ${artistSaved}`}</p>}
         <Header />
-        <form action="">
+        <form action="" className="main-form-search">
           <input
+            className="inputSearch"
             hidden={ showOrNo }
             type="text"
             data-testid="search-artist-input"
@@ -31,6 +33,7 @@ class Search extends Component {
           />
           <button
             hidden={ showOrNo }
+            className="buttonSearch"
             disabled={ disbaleOrNo }
             data-testid="search-artist-button"
             type="button"
@@ -39,19 +42,20 @@ class Search extends Component {
             Pesquisar
           </button>
         </form>
-        <section>
+        <section className="album-list-main">
           {loading && <Loading />}
           {APIResultAlbuns
             .map(({ collectionId, artistName, artworkUrl100, collectionName }, i) => (
-              <div key={ i }>
-                <img src={ artworkUrl100 } alt={ artistName } />
-                <p>{artistName}</p>
-                <p>{collectionName}</p>
+              <div className="album-div" key={ i }>
+                <img className="img-album" src={ artworkUrl100 } alt={ artistName } />
+                <p className="artist-name">{artistName}</p>
+                <p className="collection-name">{collectionName}</p>
                 <Link
                   data-testid={ `link-to-album-${collectionId}` }
                   to={ `/album/${collectionId}` }
+                  className="button-listen"
                 >
-                  LINK
+                  🎵
                 </Link>
               </div>))}
         </section>
